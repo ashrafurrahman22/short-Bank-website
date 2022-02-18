@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Players</title>
     <style>
+        /* #players .player:first-child{
+            background-color: lightblue;
+        } */
+
         .player-name{
             color:goldenrod;
             font-size: 1.5em;
@@ -15,10 +19,10 @@
 </head>
 <body>
     <header>
-        <h1>Players stats</h1>
+        <h1 id="player-title">Players stats</h1>
     </header>
     <main>
-        <section>
+        <section class="players">
             <div class="player">
                 <h4 class="player-name">player - 1</h4>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quaerat consectetur officia labore laborum, repellendus nesciunt iure at perspiciatis voluptas repellat nisi facere cum dolorem ea, eaque molestias? Qui, ea?</p>
@@ -34,8 +38,12 @@
             <div class="player">
                 <h4 class="player-name">player - 4</h4>
                 <p>Quibusdam harum sint non in ad nesciunt a aliquid similique eligendi. Vero beatae tempore id explicabo blanditiis ad enim asperiores inventore itaque voluptas, nobis reiciendis provident dicta voluptatibus deleniti similique!</p>
-            </div>
+            </div>   
         </section>
+        <button onclick="addPlayer()">Add Player</button>
     </main>
+
+
+    <script src="players.js"></script>
 </body>
 </html>
