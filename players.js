@@ -9,9 +9,9 @@ function setPlayerStyle(player){
 const players = document.getElementsByClassName('player');
 for(const player of players){
         setPlayerStyle(player);
-        player.addEventListener('click', function(){
+       /*  player.addEventListener('click', function(){
             player.style.backgroundColor = 'yellow';
-        })
+        }) */
 
 } 
 
@@ -30,6 +30,7 @@ title.style.marginTop = '5px';
 // add player by clicking button 
 function addPlayer(){
     const playersContainer = document.getElementById('players');
+    console.log(playersContainer);
     const player = document.createElement('div');
     player.classList.add('player');
     player.innerHTML = `
@@ -38,21 +39,20 @@ function addPlayer(){
     `;
 
     console.log(player);
-
+    setPlayerStyle(player);
     playersContainer.appendChild(player);
+
+   /*  player.addEventListener('click', function(){
+        player.style.backgroundColor = 'yellow';
+    }) */
 }
 
-/* document.getElementById('add-button').addEventListener('click', function(){
-
-    const playersContainer = document.getElementById('players');
-    const player = document.createElement('div');
-    player.classList.add('player');
-    player.innerHTML = `
-    <h4 class="player-name">New player</h4>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis quaerat consectetur officia labore laborum, repellendus nesciunt iure at perspiciatis voluptas repellat nisi facere cum dolorem ea, eaque molestias? Qui, ea?</p>
-    `;
-
-    console.log(player);
-
-    playersContainer.appendChild(player);
-}); */
+document.getElementById('players').addEventListener('click', function(event){
+        console.log(event.target.tagName.toLowerCase());
+        if(event.target.tagName.toLowerCase() == 'div'){
+            event.target.style.backgroundColor = 'yellow';
+        }
+        else{
+            event.target.parentNode.style.backgroundColor = 'red';
+        }
+});
