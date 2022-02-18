@@ -11,19 +11,24 @@ function getInputValue(fieldId){
 
 // second function
 function updateTotal(fieldId, amount){
-    const totalTag = document.getElementById(fieldId);
-    const previousTotalInText = totalTag.innerText;
-    const previousTotal = parseFloat(previousTotalInText);
-
+    const previousTotal = getInnerTextValue(fieldId);
     const newTotal = previousTotal + amount;
-    totalTag.innerText = newTotal;
+    document.getElementById(fieldId).innerText = newTotal;
 }
+
+// fourth-function
+function getInnerTextValue(field){
+    const fieldTag = document.getElementById(field);
+    const fieldValueInText = fieldTag.innerText;
+    const fieldValue = parseFloat(fieldValueInText);
+    return fieldValue; 
+}
+
 
 // third function
 function updateBalance(amount, isAdd){
-    const balanceTag = document.getElementById('balance-total');
-    const previousBalanceText = balanceTag.innerText;
-    const previousBalance = parseFloat(previousBalanceText);
+    
+    const previousBalance = getInnerTextValue('balance-total');
 
     // use if else with let variable
     let newBalance;
@@ -33,18 +38,7 @@ function updateBalance(amount, isAdd){
     else{
         newBalance = previousBalance - amount;
     }
-    balanceTag.innerText = newBalance;
-
-
-    // use if else with const variable 
-   /*  if(isAdd == true){
-        const newDepositBalance = previousBalance + amount;
-    balanceTag.innerText = newDepositBalance;
-    }
-    else{
-        const newWithdrawBalance = previousBalance - amount;
-    balanceTag.innerText = newWithdrawBalance;
-    } */
+    document.getElementById('balance-total').innerText = newBalance;
 }
 
 
@@ -62,7 +56,8 @@ document.getElementById('deposit-button').addEventListener('click', function(){
 // event handler for withdraw 
 document.getElementById('withdraw-button').addEventListener('click', function(){
     const amount = getInputValue('withdraw-input');
-    if(amount > 0 ){
+    const balance = getInnerTextValue('balance-total')
+    if(amount > 0 && amount <= balance ){
         updateTotal('withdraw-total', amount);
     updateBalance(amount, false);
     }
